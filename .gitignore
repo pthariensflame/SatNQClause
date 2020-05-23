@@ -112,7 +112,7 @@ local.properties
 
 # Uncomment this line if you wish to ignore the project description file.
 # Typically, this file would be tracked if it contains build/dependency configurations:
-#.project
+.project
 
 
 ### https://raw.github.com/github/gitignore/18aa6d83774d514da479d73a4beb864cd4220231/Global/Emacs.gitignore
@@ -184,7 +184,7 @@ gradle-app.setting
 .gradletasknamecache
 
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
-# gradle/wrapper/gradle-wrapper.properties
+gradle/wrapper/gradle-wrapper.properties
 
 
 ### https://raw.github.com/github/gitignore/18aa6d83774d514da479d73a4beb864cd4220231/Global/JEnv.gitignore
@@ -255,14 +255,14 @@ hs_err_pid*
 # When using Gradle or Maven with auto-import, you should exclude module files,
 # since they will be recreated, and may cause churn.  Uncomment if using
 # auto-import.
-# .idea/artifacts
-# .idea/compiler.xml
-# .idea/jarRepositories.xml
-# .idea/modules.xml
-# .idea/*.iml
-# .idea/modules
-# *.iml
-# *.ipr
+.idea/artifacts
+.idea/compiler.xml
+.idea/jarRepositories.xml
+.idea/modules.xml
+.idea/*.iml
+.idea/modules
+*.iml
+*.ipr
 
 # CMake
 cmake-build-*/
@@ -741,7 +741,8 @@ DerivedData/
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -763,3 +764,7 @@ Temporary Items
 .apdisk
 
 
+## User additions
+
+mxbuild/
+workingsets.xml
