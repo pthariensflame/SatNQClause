@@ -769,3 +769,4 @@ Temporary Items
 mxbuild/
 workingsets.xml
 .idea/
+stale_outputs_checked
