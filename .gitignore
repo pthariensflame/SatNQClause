@@ -106,9 +106,9 @@ local.properties
 .apt_generated_test/
 
 # Scala IDE specific (Scala & Java development for Eclipse)
-.cache-main
-.scala_dependencies
-.worksheet
+#.cache-main
+#.scala_dependencies
+#.worksheet
 
 # Uncomment this line if you wish to ignore the project description file.
 # Typically, this file would be tracked if it contains build/dependency configurations:
@@ -165,26 +165,6 @@ flycheck_*.el
 
 # network security
 /network-security.data
-
-
-
-### https://raw.github.com/github/gitignore/18aa6d83774d514da479d73a4beb864cd4220231/Gradle.gitignore
-
-.gradle
-**/build/
-!src/**/build/
-
-# Ignore Gradle GUI config
-gradle-app.setting
-
-# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
-!gradle-wrapper.jar
-
-# Cache of project
-.gradletasknamecache
-
-# # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
-gradle/wrapper/gradle-wrapper.properties
 
 
 ### https://raw.github.com/github/gitignore/18aa6d83774d514da479d73a4beb864cd4220231/Global/JEnv.gitignore
@@ -303,33 +283,6 @@ fabric.properties
 # Swap Files #
 .*.kate-swp
 .swp.*
-
-
-### https://raw.github.com/github/gitignore/18aa6d83774d514da479d73a4beb864cd4220231/Kotlin.gitignore
-
-# Compiled class file
-*.class
-
-# Log file
-*.log
-
-# BlueJ files
-*.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
 
 
 ### https://raw.github.com/github/gitignore/18aa6d83774d514da479d73a4beb864cd4220231/Global/Linux.gitignore
@@ -533,31 +486,9 @@ dmypy.json
 cython_debug/
 
 
-### https://raw.github.com/github/gitignore/18aa6d83774d514da479d73a4beb864cd4220231/Global/SBT.gitignore
-
-# Simple Build Tool
-# http://www.scala-sbt.org/release/docs/Getting-Started/Directories.html#configuring-version-control
-
-dist/*
-target/
-lib_managed/
-src_managed/
-project/boot/
-project/plugins/project/
-.history
-.cache
-.lib/
-
-
 ### https://raw.github.com/github/gitignore/18aa6d83774d514da479d73a4beb864cd4220231/Global/SVN.gitignore
 
 .svn/
-
-
-### https://raw.github.com/github/gitignore/18aa6d83774d514da479d73a4beb864cd4220231/Scala.gitignore
-
-*.class
-*.log
 
 
 ### https://raw.github.com/github/gitignore/18aa6d83774d514da479d73a4beb864cd4220231/Global/SublimeText.gitignore
