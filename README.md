@@ -1,3 +1,3 @@
 # SatNQClause
 
-**Heavily WIP.**  Truffle implementation of a recursive open-world solver for nested quantifier clauses; for use internally in [Sylvia](https://github.com/pthariensflame/sylvia) and inspired by [chalk](https://github.com/rust-lang/chalk).
+**Heavily WIP.**  Truffle implementation of an open-world solver for [hereditary Harrop formulae](https://en.wikipedia.org/wiki/Harrop_formula#Hereditary_Harrop_formulae_and_logic_programming) over [dependenly-sorted algebras with isomorphism](https://arxiv.org/abs/1603.03092); for use internally in [Sylvia](https://github.com/pthariensflame/sylvia) (and possibly other places in the future) and inspired by [chalk](https://github.com/rust-lang/chalk).  The name is a pun on [“Santa Claus”](https://en.wikipedia.org/wiki/Santa_Claus), and is short for “Satisfiability of Nested Quantifier Clauses".
