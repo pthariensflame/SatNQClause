@@ -67,6 +67,35 @@ suite = {
             "moduleName": "org.jetbrains.annotations",
         },
 
+        "ORG_TYPEMETA_FUNCJ_CORE": {
+            "sha1": "3d31df25aecdc54e422ee63556dce20374eee777",
+            "maven": {
+                "groupId": "org.typemeta",
+                "artifactId": "funcj-core",
+                "version": "0.6.15",
+            },
+            "moduleName": "org.typemeta.funcj.core",
+        },
+        "ORG_TYPEMETA_FUNCJ_PARSER": {
+            "sha1": "c3bbd663d8ce8fb880f5dba57654518f2914a0bd",
+            "maven": {
+                "groupId": "org.typemeta",
+                "artifactId": "funcj-parser",
+                "version": "0.6.15",
+            },
+            "moduleName": "org.typemeta.funcj.parser",
+        },
+
+        "IO_KINDEDJ": {
+            "sha1": "462731347602a3f24e3f21feec50928f9a657741",
+            "maven": {
+                "groupId": "io.kindedj",
+                "artifactId": "kindedj",
+                "version": "1.1.0",
+            },
+            "moduleName": "io.kindedj",
+        },
+
         "ORG_JLINE_READER": {
             "sha1": "3ae8dbc62a23fd8ffbb2e389c6d5df2b50efa699",
             "maven": {
@@ -104,7 +133,7 @@ suite = {
             "moduleName": "org.jline.terminal.jansi",
         },
 
-        "ORG_JANSI": {
+        "ORG_FUSESOURCE_JANSI": {
             "sha1": "d9205bbcd4b5f9cd1effe752d18f73bd942d783f",
             "maven": {
                 "groupId": "org.fusesource.jansi",
@@ -113,145 +142,164 @@ suite = {
             },
             "moduleName": "org.fusesource.jansi",
         },
-
-        "ORG_ANTLR4_RUNTIME": {
-            "sha1": "2d0456a791f3a95916c8c23b3bea3a90eea24720",
-            "maven": {
-                "groupId": "org.antlr",
-                "artifactId": "antlr4-runtime",
-                "version": "4.8-1",
-            },
-            "moduleName": "org.antlr.antlr4.runtime",
-        },
-        "ORG_ANTLR4_COMPLETE": {
-            "sha1": "ca08d2a2b7ffe0709638a951d767b8d93d46023f",
-            "maven": {
-                "groupId": "org.antlr",
-                "artifactId": "antlr4",
-                "version": "4.8-1",
-                "classifier": "complete",
-            },
-            "moduleName": "org.antlr.antlr4.complete",
-        },
     },
 
     "projects": {
         "com.pthariensflame.satnq_clause.shell": {
             "subDir": "src",
+            "sourceDirs": [
+                "src",
+            ],
             "javaCompliance": "8+",
             "annotationProcessors": [
                 "truffle:TRUFFLE_DSL_PROCESSOR",
             ],
             "dependencies": [
                 "ORG_JETBRAINS_ANNOTATIONS",
-                "ORG_ANTLR4_RUNTIME",
+                "ORG_TYPEMETA_FUNCJ_CORE",
+                "IO_KINDEDJ",
                 "ORG_JLINE_READER",
                 "ORG_JLINE_STYLE",
                 "ORG_JLINE_TERMINAL",
                 "ORG_JLINE_TERMINAL_JANSI",
-                "ORG_JANSI",
+                "ORG_FUSESOURCE_JANSI",
                 "sdk:LAUNCHER_COMMON",
                 "com.pthariensflame.satnq_clause.parser",
                 "com.pthariensflame.satnq_clause.lang",
                 "com.pthariensflame.satnq_clause.nodes",
             ],
         },
-        "com.pthariensflame.satnq_clause.shell.jdk9": {
+        "com.pthariensflame.satnq_clause.shell.jdk11": {
             "subDir": "src",
-            "javaCompliance": "9+",
-            "multiReleaseJarVersion": "9",
+            "sourceDirs": [
+                "src",
+            ],
+            "javaCompliance": "11+",
+            "multiReleaseJarVersion": "11",
             "overlayTarget": "com.pthariensflame.satnq_clause.shell",
             "annotationProcessors": [
                 "truffle:TRUFFLE_DSL_PROCESSOR",
             ],
             "dependencies": [
                 "ORG_JETBRAINS_ANNOTATIONS",
+                "ORG_TYPEMETA_FUNCJ_CORE",
+                "IO_KINDEDJ",
                 "com.pthariensflame.satnq_clause.shell",
-                "com.pthariensflame.satnq_clause.parser.jdk9",
-                "com.pthariensflame.satnq_clause.lang.jdk9",
-                "com.pthariensflame.satnq_clause.nodes.jdk9",
+                "com.pthariensflame.satnq_clause.parser.jdk11",
+                "com.pthariensflame.satnq_clause.lang.jdk11",
+                "com.pthariensflame.satnq_clause.nodes.jdk11",
             ],
         },
 
         "com.pthariensflame.satnq_clause.parser": {
             "subDir": "src",
+            "sourceDirs": [
+                "src",
+            ],
             "javaCompliance": "8+",
             "annotationProcessors": [
                 "truffle:TRUFFLE_DSL_PROCESSOR",
             ],
             "dependencies": [
                 "ORG_JETBRAINS_ANNOTATIONS",
-                "ORG_ANTLR4_RUNTIME",
+                "ORG_TYPEMETA_FUNCJ_CORE",
+                "ORG_TYPEMETA_FUNCJ_PARSER",
+                "IO_KINDEDJ",
                 "com.pthariensflame.satnq_clause.lang",
                 "com.pthariensflame.satnq_clause.nodes",
             ],
         },
-        "com.pthariensflame.satnq_clause.parser.jdk9": {
+        "com.pthariensflame.satnq_clause.parser.jdk11": {
             "subDir": "src",
-            "javaCompliance": "9+",
-            "multiReleaseJarVersion": "9",
+            "sourceDirs": [
+                "src",
+            ],
+            "javaCompliance": "11+",
+            "multiReleaseJarVersion": "11",
             "overlayTarget": "com.pthariensflame.satnq_clause.parser",
             "annotationProcessors": [
                 "truffle:TRUFFLE_DSL_PROCESSOR",
             ],
             "dependencies": [
                 "ORG_JETBRAINS_ANNOTATIONS",
+                "ORG_TYPEMETA_FUNCJ_CORE",
+                "IO_KINDEDJ",
                 "com.pthariensflame.satnq_clause.parser",
-                "com.pthariensflame.satnq_clause.lang.jdk9",
-                "com.pthariensflame.satnq_clause.nodes.jdk9",
+                "com.pthariensflame.satnq_clause.lang.jdk11",
+                "com.pthariensflame.satnq_clause.nodes.jdk11",
             ],
         },
 
         "com.pthariensflame.satnq_clause.lang": {
             "subDir": "src",
+            "sourceDirs": [
+                "src",
+            ],
             "javaCompliance": "8+",
             "annotationProcessors": [
                 "truffle:TRUFFLE_DSL_PROCESSOR",
             ],
             "dependencies": [
                 "ORG_JETBRAINS_ANNOTATIONS",
+                "ORG_TYPEMETA_FUNCJ_CORE",
+                "IO_KINDEDJ",
                 "truffle:TRUFFLE_API",
                 "sdk:GRAAL_SDK",
                 "com.pthariensflame.satnq_clause.nodes",
             ],
         },
-        "com.pthariensflame.satnq_clause.lang.jdk9": {
+        "com.pthariensflame.satnq_clause.lang.jdk11": {
             "subDir": "src",
-            "javaCompliance": "9+",
-            "multiReleaseJarVersion": "9",
+            "sourceDirs": [
+                "src",
+            ],
+            "javaCompliance": "11+",
+            "multiReleaseJarVersion": "11",
             "overlayTarget": "com.pthariensflame.satnq_clause.lang",
             "annotationProcessors": [
                 "truffle:TRUFFLE_DSL_PROCESSOR",
             ],
             "dependencies": [
                 "ORG_JETBRAINS_ANNOTATIONS",
+                "ORG_TYPEMETA_FUNCJ_CORE",
+                "IO_KINDEDJ",
                 "com.pthariensflame.satnq_clause.lang",
-                "com.pthariensflame.satnq_clause.nodes.jdk9",
+                "com.pthariensflame.satnq_clause.nodes.jdk11",
             ],
         },
 
         "com.pthariensflame.satnq_clause.nodes": {
             "subDir": "src",
+            "sourceDirs": [
+                "src",
+            ],
             "javaCompliance": "8+",
             "annotationProcessors": [
                 "truffle:TRUFFLE_DSL_PROCESSOR",
             ],
             "dependencies": [
                 "ORG_JETBRAINS_ANNOTATIONS",
+                "ORG_TYPEMETA_FUNCJ_CORE",
+                "IO_KINDEDJ",
                 "truffle:TRUFFLE_API",
                 "sdk:GRAAL_SDK",
             ],
         },
-        "com.pthariensflame.satnq_clause.nodes.jdk9": {
+        "com.pthariensflame.satnq_clause.nodes.jdk11": {
             "subDir": "src",
-            "javaCompliance": "9+",
-            "multiReleaseJarVersion": "9",
+            "sourceDirs": [
+                "src",
+            ],
+            "javaCompliance": "11+",
+            "multiReleaseJarVersion": "11",
             "overlayTarget": "com.pthariensflame.satnq_clause.nodes",
             "annotationProcessors": [
                 "truffle:TRUFFLE_DSL_PROCESSOR",
             ],
             "dependencies": [
                 "ORG_JETBRAINS_ANNOTATIONS",
+                "ORG_TYPEMETA_FUNCJ_CORE",
+                "IO_KINDEDJ",
                 "com.pthariensflame.satnq_clause.nodes",
             ],
         },
@@ -259,6 +307,7 @@ suite = {
 
     "distributions": {
         "SATNQ_CLAUSE": {
+            "subDir": "src",
             "moduleInfo": {
                 "name": "com.pthariensflame.satnq_clause",
                 "requires": [
@@ -270,13 +319,16 @@ suite = {
                     "com.pthariensflame.satnq_clause.shell",
                 ],
                 "opens": [
+                    "com.pthariensflame.satnq_clause.nodes",
+                    "com.pthariensflame.satnq_clause.lang",
+                    "com.pthariensflame.satnq_clause.parser",
+                    "com.pthariensflame.satnq_clause.shell",
                 ],
                 "uses": [
                 ],
-                "provides": [
-                ],
+                "provides": {
+                },
             },
-            "subDir": "src",
             "dependencies": [
                 "com.pthariensflame.satnq_clause.nodes",
                 "com.pthariensflame.satnq_clause.lang",
@@ -285,12 +337,13 @@ suite = {
             ],
             "distDependencies": [
                 "ORG_JETBRAINS_ANNOTATIONS",
+                "ORG_TYPEMETA_FUNCJ_CORE",
+                "ORG_TYPEMETA_FUNCJ_PARSER",
                 "ORG_JLINE_READER",
                 "ORG_JLINE_STYLE",
                 "ORG_JLINE_TERMINAL",
                 "ORG_JLINE_TERMINAL_JANSI",
-                "ORG_JANSI",
-                "ORG_ANTLR4_RUNTIME",
+                "ORG_FUSESOURCE_JANSI",
                 "truffle:TRUFFLE_API",
                 "sdk:GRAAL_SDK",
                 "sdk:LAUNCHER_COMMON",
