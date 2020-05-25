@@ -1,6 +1,5 @@
 package com.pthariensflame.satnq_clause.nodes;
 
-import com.oracle.truffle.api.TruffleLanguage;
 import com.oracle.truffle.api.dsl.CachedContext;
 import com.oracle.truffle.api.dsl.GenerateNodeFactory;
 import com.oracle.truffle.api.dsl.NodeChild;
@@ -21,6 +20,7 @@ import com.oracle.truffle.api.source.Source;
 import com.oracle.truffle.api.source.SourceSection;
 import com.pthariensflame.satnq_clause.lang.SatNQClauseContext;
 import com.pthariensflame.satnq_clause.lang.SatNQClauseLanguage;
+import com.pthariensflame.satnq_clause.values.PreSourceSection;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -43,11 +43,11 @@ public abstract class TheoryNode extends RootNode implements SatNQClauseNode {
         this(null);
     }
 
-    public TheoryNode(@Nullable SatNQClauseLanguage language) {
+    protected TheoryNode(@Nullable SatNQClauseLanguage language) {
         super(language);
     }
 
-    public TheoryNode(@Nullable SatNQClauseLanguage language, @Nullable FrameDescriptor frameDescriptor) {
+    protected TheoryNode(@Nullable SatNQClauseLanguage language, @Nullable FrameDescriptor frameDescriptor) {
         super(language, frameDescriptor);
     }
 
@@ -58,9 +58,12 @@ public abstract class TheoryNode extends RootNode implements SatNQClauseNode {
             @NotNull VirtualFrame frame,
             @NotNull SatNQClauseNode body,
             @CachedContext(SatNQClauseLanguage.class)
-            @NotNull TruffleLanguage.ContextReference<SatNQClauseContext> cxt) {
-        cxt.get().getTheories().put(getTheoryName(), this);
-        return this;
+            @NotNull SatNQClauseContext cxt) {
+        final @NotNull TheoryNode self = this;
+        return cxt.withTheories(theories -> {
+            theories.put(getTheoryName(), self);
+            return self;
+        });
     }
 
     @Contract("_ -> new")

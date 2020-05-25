@@ -1,5 +1,6 @@
 package com.pthariensflame.satnq_clause.nodes;
 
+import com.oracle.truffle.api.dsl.GenerateUncached;
 import com.oracle.truffle.api.dsl.ReportPolymorphism;
 import com.oracle.truffle.api.instrumentation.InstrumentableNode;
 import com.oracle.truffle.api.instrumentation.ProbeNode;
@@ -8,6 +9,8 @@ import com.oracle.truffle.api.nodes.NodeInfo;
 import com.oracle.truffle.api.source.Source;
 import com.oracle.truffle.api.source.SourceSection;
 import com.pthariensflame.satnq_clause.lang.SatNQClauseLanguage;
+import com.pthariensflame.satnq_clause.values.PreSourceSection;
+import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -16,7 +19,8 @@ import org.jetbrains.annotations.Nullable;
         language = SatNQClauseLanguage.LANGUAGE_NAME
 )
 @ReportPolymorphism
-interface SatNQClauseNode extends InstrumentableNode, TruffleObject {
+@ApiStatus.NonExtendable
+public interface SatNQClauseNode extends InstrumentableNode, TruffleObject {
     @Contract("_ -> new")
     @NotNull
     @Override
@@ -42,13 +46,14 @@ interface SatNQClauseNode extends InstrumentableNode, TruffleObject {
     @Nullable
     PreSourceSection getPreSourceSection();
 
+    @SuppressWarnings("unused")
     @Nullable
     default SourceSection getSourceSection() {
-        {
-            if (getSource() == null) return null;
-            else if (getPreSourceSection() != null)
-                return getPreSourceSection().asSectionOf(getSource());
-            else return getSource().createUnavailableSection();
-        }
+        final @Nullable Source s = getSource();
+        final @Nullable PreSourceSection pss = getPreSourceSection();
+        if (s == null) return null;
+        else if (pss != null)
+            return pss.asSectionOf(s);
+        else return s.createUnavailableSection();
     }
 }
