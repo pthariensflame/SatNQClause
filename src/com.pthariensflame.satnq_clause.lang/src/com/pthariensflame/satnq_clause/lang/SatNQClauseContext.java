@@ -1,8 +1,11 @@
-package com.pthariensflame.satnq_clause.nodes;
+package com.pthariensflame.satnq_clause.lang;
 
 import com.oracle.truffle.api.TruffleLanguage.Env;
 import com.oracle.truffle.api.profiles.ConditionProfile;
 import com.oracle.truffle.api.utilities.AssumedValue;
+import com.pthariensflame.satnq_clause.nodes.TheoryNode;
+import org.graalvm.collections.EconomicMap;
+import org.graalvm.collections.Equivalence;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -12,6 +15,16 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 public final class SatNQClauseContext {
+    private final @NotNull
+    EconomicMap<@NotNull String, @NotNull TheoryNode> theories =
+            EconomicMap.create(Equivalence.DEFAULT);
+
+    @Contract(pure = true)
+    @NotNull
+    public EconomicMap<@NotNull String, @NotNull TheoryNode> getTheories() {
+        return theories;
+    }
+
     private final @NotNull
     AssumedValue<@NotNull Env> envVal;
 
@@ -47,7 +60,8 @@ public final class SatNQClauseContext {
     }
 
     private final @NotNull
-    ConditionProfile polyglotBindingsAvailableProfile = ConditionProfile.createBinaryProfile();
+    ConditionProfile polyglotBindingsAvailableProfile =
+            ConditionProfile.createBinaryProfile();
 
     @Nullable
     public Object getPolyglotBindingsOrNull() {

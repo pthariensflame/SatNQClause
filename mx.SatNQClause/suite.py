@@ -22,7 +22,7 @@ suite = {
         "suites": [
             {
                 "name": "truffle",
-                "version": "3af0bff031fd7b9771fb74a323928b70576a8254",
+                "version": "704a4b22febcc2d59848176b1b906742690f1fa6",
                 "subdir": True,
                 "urls": [
                     {
@@ -65,6 +65,16 @@ suite = {
                 "version": "19.0.0",
             },
             "moduleName": "org.jetbrains.annotations",
+        },
+
+        "COM_IBM_ICU4J": {
+            "sha1": "2e159807158095566726600534034030dddab6d0",
+            "maven": {
+                "groupId": "com.ibm.icu",
+                "artifactId": "icu4j",
+                "version": "67.1",
+            },
+            "moduleName": "com.ibm.icu",
         },
 
         "ORG_TYPEMETA_FUNCJ_CORE": {
@@ -166,7 +176,6 @@ suite = {
                 "sdk:LAUNCHER_COMMON",
                 "com.pthariensflame.satnq_clause.parser",
                 "com.pthariensflame.satnq_clause.lang",
-                "com.pthariensflame.satnq_clause.nodes",
             ],
         },
         "com.pthariensflame.satnq_clause.shell.jdk11": {
@@ -187,7 +196,6 @@ suite = {
                 "com.pthariensflame.satnq_clause.shell",
                 "com.pthariensflame.satnq_clause.parser.jdk11",
                 "com.pthariensflame.satnq_clause.lang.jdk11",
-                "com.pthariensflame.satnq_clause.nodes.jdk11",
             ],
         },
 
@@ -205,8 +213,8 @@ suite = {
                 "ORG_TYPEMETA_FUNCJ_CORE",
                 "ORG_TYPEMETA_FUNCJ_PARSER",
                 "IO_KINDEDJ",
+                "COM_IBM_ICU4J",
                 "com.pthariensflame.satnq_clause.lang",
-                "com.pthariensflame.satnq_clause.nodes",
             ],
         },
         "com.pthariensflame.satnq_clause.parser.jdk11": {
@@ -226,7 +234,6 @@ suite = {
                 "IO_KINDEDJ",
                 "com.pthariensflame.satnq_clause.parser",
                 "com.pthariensflame.satnq_clause.lang.jdk11",
-                "com.pthariensflame.satnq_clause.nodes.jdk11",
             ],
         },
 
@@ -245,7 +252,6 @@ suite = {
                 "IO_KINDEDJ",
                 "truffle:TRUFFLE_API",
                 "sdk:GRAAL_SDK",
-                "com.pthariensflame.satnq_clause.nodes",
             ],
         },
         "com.pthariensflame.satnq_clause.lang.jdk11": {
@@ -264,43 +270,6 @@ suite = {
                 "ORG_TYPEMETA_FUNCJ_CORE",
                 "IO_KINDEDJ",
                 "com.pthariensflame.satnq_clause.lang",
-                "com.pthariensflame.satnq_clause.nodes.jdk11",
-            ],
-        },
-
-        "com.pthariensflame.satnq_clause.nodes": {
-            "subDir": "src",
-            "sourceDirs": [
-                "src",
-            ],
-            "javaCompliance": "8+",
-            "annotationProcessors": [
-                "truffle:TRUFFLE_DSL_PROCESSOR",
-            ],
-            "dependencies": [
-                "ORG_JETBRAINS_ANNOTATIONS",
-                "ORG_TYPEMETA_FUNCJ_CORE",
-                "IO_KINDEDJ",
-                "truffle:TRUFFLE_API",
-                "sdk:GRAAL_SDK",
-            ],
-        },
-        "com.pthariensflame.satnq_clause.nodes.jdk11": {
-            "subDir": "src",
-            "sourceDirs": [
-                "src",
-            ],
-            "javaCompliance": "11+",
-            "multiReleaseJarVersion": "11",
-            "overlayTarget": "com.pthariensflame.satnq_clause.nodes",
-            "annotationProcessors": [
-                "truffle:TRUFFLE_DSL_PROCESSOR",
-            ],
-            "dependencies": [
-                "ORG_JETBRAINS_ANNOTATIONS",
-                "ORG_TYPEMETA_FUNCJ_CORE",
-                "IO_KINDEDJ",
-                "com.pthariensflame.satnq_clause.nodes",
             ],
         },
     },
@@ -330,7 +299,6 @@ suite = {
                 },
             },
             "dependencies": [
-                "com.pthariensflame.satnq_clause.nodes",
                 "com.pthariensflame.satnq_clause.lang",
                 "com.pthariensflame.satnq_clause.parser",
                 "com.pthariensflame.satnq_clause.shell",
