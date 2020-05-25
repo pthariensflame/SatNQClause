@@ -27,7 +27,12 @@ public final class SatNQClauseContext {
     EconomicMap<@NotNull String, @NotNull TheoryNode> theories =
             EconomicMap.create(Equivalence.DEFAULT);
 
-    private final @NotNull ReentrantReadWriteLock theoriesSynchGuard = new ReentrantReadWriteLock();
+    private final @NotNull
+    ReentrantReadWriteLock theoriesSynchGuard = new ReentrantReadWriteLock();
+    private final @NotNull
+    ReentrantReadWriteLock.ReadLock theoriesSynchGuardRead = theoriesSynchGuard.readLock();
+    private final @NotNull
+    ReentrantReadWriteLock.WriteLock theoriesSynchGuardWrite = theoriesSynchGuard.writeLock();
 
     @Contract(pure = true)
     @NotNull
@@ -38,132 +43,132 @@ public final class SatNQClauseContext {
     public <R> R withTheories(
             @NotNull Function<@NotNull EconomicMap<@NotNull String, @NotNull TheoryNode>, R> fn
     ) {
-        theoriesSynchGuard.writeLock().lock();
+        theoriesSynchGuardWrite.lock();
         try {
             return fn.apply(getTheories());
         } finally {
-            theoriesSynchGuard.writeLock().unlock();
+            theoriesSynchGuardWrite.unlock();
         }
     }
 
     public void withTheoriesToVoid(
             @NotNull Consumer<@NotNull EconomicMap<@NotNull String, @NotNull TheoryNode>> fn
     ) {
-        theoriesSynchGuard.writeLock().lock();
+        theoriesSynchGuardWrite.lock();
         try {
             fn.accept(getTheories());
         } finally {
-            theoriesSynchGuard.writeLock().unlock();
+            theoriesSynchGuardWrite.unlock();
         }
     }
 
     public boolean withTheoriesToBool(
             @NotNull Predicate<@NotNull EconomicMap<@NotNull String, @NotNull TheoryNode>> fn
     ) {
-        theoriesSynchGuard.writeLock().lock();
+        theoriesSynchGuardWrite.lock();
         try {
             return fn.test(getTheories());
         } finally {
-            theoriesSynchGuard.writeLock().unlock();
+            theoriesSynchGuardWrite.unlock();
         }
     }
 
     public int withTheoriesToInt(
             @NotNull ToIntFunction<@NotNull EconomicMap<@NotNull String, @NotNull TheoryNode>> fn
     ) {
-        theoriesSynchGuard.writeLock().lock();
+        theoriesSynchGuardWrite.lock();
         try {
             return fn.applyAsInt(getTheories());
         } finally {
-            theoriesSynchGuard.writeLock().unlock();
+            theoriesSynchGuardWrite.unlock();
         }
     }
 
     public long withTheoriesToLong(
             @NotNull ToLongFunction<@NotNull EconomicMap<@NotNull String, @NotNull TheoryNode>> fn
     ) {
-        theoriesSynchGuard.writeLock().lock();
+        theoriesSynchGuardWrite.lock();
         try {
             return fn.applyAsLong(getTheories());
         } finally {
-            theoriesSynchGuard.writeLock().unlock();
+            theoriesSynchGuardWrite.unlock();
         }
     }
 
     public double withTheoriesToDouble(
             @NotNull ToDoubleFunction<@NotNull EconomicMap<@NotNull String, @NotNull TheoryNode>> fn
     ) {
-        theoriesSynchGuard.writeLock().lock();
+        theoriesSynchGuardWrite.lock();
         try {
             return fn.applyAsDouble(getTheories());
         } finally {
-            theoriesSynchGuard.writeLock().unlock();
+            theoriesSynchGuardWrite.unlock();
         }
     }
 
     public <R> R withTheoriesView(
             @NotNull Function<@NotNull UnmodifiableEconomicMap<@NotNull String, @NotNull ? extends TheoryNode>, R> fn
     ) {
-        theoriesSynchGuard.readLock().lock();
+        theoriesSynchGuardRead.lock();
         try {
             return fn.apply(getTheories());
         } finally {
-            theoriesSynchGuard.readLock().unlock();
+            theoriesSynchGuardRead.unlock();
         }
     }
 
     public void withTheoriesViewToVoid(
             @NotNull Consumer<@NotNull UnmodifiableEconomicMap<@NotNull String, @NotNull ? extends TheoryNode>> fn
     ) {
-        theoriesSynchGuard.readLock().lock();
+        theoriesSynchGuardRead.lock();
         try {
             fn.accept(getTheories());
         } finally {
-            theoriesSynchGuard.readLock().unlock();
+            theoriesSynchGuardRead.unlock();
         }
     }
 
     public boolean withTheoriesViewToBool(
             @NotNull Predicate<@NotNull UnmodifiableEconomicMap<@NotNull String, @NotNull ? extends TheoryNode>> fn
     ) {
-        theoriesSynchGuard.readLock().lock();
+        theoriesSynchGuardRead.lock();
         try {
             return fn.test(getTheories());
         } finally {
-            theoriesSynchGuard.readLock().unlock();
+            theoriesSynchGuardRead.unlock();
         }
     }
 
     public int withTheoriesViewToInt(
             @NotNull ToIntFunction<@NotNull UnmodifiableEconomicMap<@NotNull String, @NotNull ? extends TheoryNode>> fn
     ) {
-        theoriesSynchGuard.readLock().lock();
+        theoriesSynchGuardRead.lock();
         try {
             return fn.applyAsInt(getTheories());
         } finally {
-            theoriesSynchGuard.readLock().unlock();
+            theoriesSynchGuardRead.unlock();
         }
     }
 
     public long withTheoriesViewToLong(
             @NotNull ToLongFunction<@NotNull UnmodifiableEconomicMap<@NotNull String, @NotNull ? extends TheoryNode>> fn
     ) {
-        theoriesSynchGuard.readLock().lock();
+        theoriesSynchGuardRead.lock();
         try {
             return fn.applyAsLong(getTheories());
         } finally {
-            theoriesSynchGuard.readLock().unlock();
+            theoriesSynchGuardRead.unlock();
         }
     }
 
     public double withTheoriesViewToDouble(
             @NotNull ToDoubleFunction<@NotNull UnmodifiableEconomicMap<@NotNull String, @NotNull ? extends TheoryNode>> fn
     ) {
-        theoriesSynchGuard.readLock().lock();
+        theoriesSynchGuardRead.lock();
         try {
             return fn.applyAsDouble(getTheories());
         } finally {
-            theoriesSynchGuard.readLock().unlock();
+            theoriesSynchGuardRead.unlock();
         }
     }
 
